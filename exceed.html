@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="text-container">
+        <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button id="expand-btn">Show more</button>
+      </div>
+      
+    <script>
+const MAX_CHARS = 10;
+const textContainer = document.getElementById("text-container");
+const text = document.getElementById("text");
+const expandBtn = document.getElementById("expand-btn");
+
+if (text.innerText.length > MAX_CHARS) {
+  const shortText = text.innerText.slice(0, MAX_CHARS) + "...";
+  text.innerText = shortText;
+  expandBtn.style.display = "inline";
+}
+
+expandBtn.addEventListener("click", function() {
+  text.innerText = textContainer.dataset.fullText;
+  expandBtn.style.display = "none";
+});
+
+textContainer.dataset.fullText = text.innerText;
+
+    </script>
+</body>
+</html>

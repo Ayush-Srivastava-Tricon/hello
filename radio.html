@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Aman: <input type="radio" name="Aman" value="Enable" onchange="status(event)" id="enable"><label for="enable">Enable</label> &nbsp;&nbsp;&nbsp; <input type="radio" name="Aman" value="Disable" onchange="status(event)" id="dis"><label for="dis">Disable</label>  <br>
+    Nitish: <input type="radio" name="Nitish" value="Enable" onchange="status(event)">Enable &nbsp;&nbsp;&nbsp; <input type="radio" name="Nitish" value="Disable" onchange="status(event)">Disable
+
+    <script>
+        let arr=[];
+        
+       function status(event){
+            if(event.target.name === "Aman" && event.target.value ===  "Enable" ){
+                arr.push(event.target.name)
+            }
+            else if(event.target.name === "Aman" && event.target.value ===  "Disable" ){
+               let idx =  arr.indexOf(event.target.name);
+               arr.splice(idx,1);
+            }
+            else if(event.target.name === "Nitish" && event.target.value ===  "Enable" ){
+                arr.push(event.target.name)
+            }
+            else if(event.target.name === "Nitish" && event.target.value ===  "Disable" ){
+               let idx =  arr.indexOf(event.target.name);
+               arr.splice(idx,1);
+            }
+            console.log(arr);
+            
+        }
+    </script>
+</body>
+</html>

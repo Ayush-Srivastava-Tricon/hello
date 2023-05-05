@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .globe-container {
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.globe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url('/earth-blue-planet-globe-planet-87651.jpeg');
+  background-size: cover;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+}
+
+</style>
+<body>
+    <div class="globe-container">
+        <div class="globe"></div>
+      </div>
+      <script>
+        const globe = document.querySelector('.globe');
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function rotateGlobe() {
+  const globeRect = globe.getBoundingClientRect();
+  const globeCenterX = globeRect.left + (globeRect.width / 2);
+  const globeCenterY = globeRect.top + (globeRect.height / 2);
+  const diffX = (mouseX - globeCenterX) / (globeRect.width / 2);
+  const diffY = (mouseY - globeCenterY) / (globeRect.height / 2);
+  const rotateY = -diffX * 30;
+  const rotateX = diffY * 30;
+  globe.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+  requestAnimationFrame(rotateGlobe);
+}
+
+rotateGlobe();
+
+      </script>
+</body>
+</html>
